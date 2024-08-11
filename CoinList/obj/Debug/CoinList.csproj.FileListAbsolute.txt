@@ -1,0 +1,15 @@
+D:\C#\CoinList\CoinList\bin\Debug\CoinList.exe.config
+D:\C#\CoinList\CoinList\bin\Debug\CoinList.exe
+D:\C#\CoinList\CoinList\bin\Debug\CoinList.pdb
+D:\C#\CoinList\CoinList\obj\Debug\CoinList.csproj.AssemblyReference.cache
+D:\C#\CoinList\CoinList\obj\Debug\View\MainWindow.g.cs
+D:\C#\CoinList\CoinList\obj\Debug\App.g.cs
+D:\C#\CoinList\CoinList\obj\Debug\CoinList_MarkupCompile.cache
+D:\C#\CoinList\CoinList\obj\Debug\CoinList_MarkupCompile.lref
+D:\C#\CoinList\CoinList\obj\Debug\View\MainWindow.baml
+D:\C#\CoinList\CoinList\obj\Debug\CoinList.g.resources
+D:\C#\CoinList\CoinList\obj\Debug\CoinList.Properties.Resources.resources
+D:\C#\CoinList\CoinList\obj\Debug\CoinList.csproj.GenerateResource.cache
+D:\C#\CoinList\CoinList\obj\Debug\CoinList.csproj.CoreCompileInputs.cache
+D:\C#\CoinList\CoinList\obj\Debug\CoinList.exe
+D:\C#\CoinList\CoinList\obj\Debug\CoinList.pdb

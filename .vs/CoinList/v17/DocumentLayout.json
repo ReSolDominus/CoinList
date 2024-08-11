@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C#\\CoinList\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7FFB0BCB-349E-4238-AFCE-315B5916B852}|CoinList\\CoinList.csproj|d:\\c#\\coinlist\\coinlist\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7FFB0BCB-349E-4238-AFCE-315B5916B852}|CoinList\\CoinList.csproj|solutionrelative:coinlist\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FFB0BCB-349E-4238-AFCE-315B5916B852}|CoinList\\CoinList.csproj|d:\\c#\\coinlist\\coinlist\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FFB0BCB-349E-4238-AFCE-315B5916B852}|CoinList\\CoinList.csproj|solutionrelative:coinlist\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FFB0BCB-349E-4238-AFCE-315B5916B852}|CoinList\\CoinList.csproj|d:\\c#\\coinlist\\coinlist\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7FFB0BCB-349E-4238-AFCE-315B5916B852}|CoinList\\CoinList.csproj|solutionrelative:coinlist\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\C#\\CoinList\\CoinList\\View\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "CoinList\\View\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\C#\\CoinList\\CoinList\\View\\MainWindow.xaml.cs",
+              "RelativeToolTip": "CoinList\\View\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-11T13:25:53.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\C#\\CoinList\\CoinList\\View\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "CoinList\\View\\MainWindow.xaml",
+              "ToolTip": "D:\\C#\\CoinList\\CoinList\\View\\MainWindow.xaml",
+              "RelativeToolTip": "CoinList\\View\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-11T13:25:45.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\C#\\CoinList\\CoinList\\App.xaml",
+              "RelativeDocumentMoniker": "CoinList\\App.xaml",
+              "ToolTip": "D:\\C#\\CoinList\\CoinList\\App.xaml",
+              "RelativeToolTip": "CoinList\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-11T13:23:08.701Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
