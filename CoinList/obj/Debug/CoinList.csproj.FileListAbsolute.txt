@@ -13,3 +13,6 @@ D:\C#\CoinList\CoinList\obj\Debug\CoinList.csproj.GenerateResource.cache
 D:\C#\CoinList\CoinList\obj\Debug\CoinList.csproj.CoreCompileInputs.cache
 D:\C#\CoinList\CoinList\obj\Debug\CoinList.exe
 D:\C#\CoinList\CoinList\obj\Debug\CoinList.pdb
+D:\C#\CoinList\CoinList\bin\Debug\Newtonsoft.Json.dll
+D:\C#\CoinList\CoinList\bin\Debug\Newtonsoft.Json.xml
+D:\C#\CoinList\CoinList\obj\Debug\CoinList.csproj.CopyComplete
