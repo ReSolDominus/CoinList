@@ -16,3 +16,7 @@ D:\C#\CoinList\CoinList\obj\Debug\CoinList.pdb
 D:\C#\CoinList\CoinList\bin\Debug\Newtonsoft.Json.dll
 D:\C#\CoinList\CoinList\bin\Debug\Newtonsoft.Json.xml
 D:\C#\CoinList\CoinList\obj\Debug\CoinList.csproj.Up2Date
+D:\C#\CoinList\CoinList\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\C#\CoinList\CoinList\obj\Debug\View\Themes\DarkTheme.baml
+D:\C#\CoinList\CoinList\obj\Debug\App.baml
+D:\C#\CoinList\CoinList\obj\Debug\View\Themes\LightTheme.baml

@@ -25,10 +25,11 @@ namespace CoinList.Model
 
             _viewModel = viewModel;
 
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(1);
+            TrendingSearchList();
+            /*_timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(100);
             _timer.Tick += async (sender, e) => await TrendingSearchList();
-            _timer.Start();
+            _timer.Start();*/
         }
 
         public async Task Ping()
@@ -52,7 +53,10 @@ namespace CoinList.Model
             {
                 string responseData = await response.Content.ReadAsStringAsync();
                 CoinsModel deserializeData = JsonConvert.DeserializeObject<CoinsModel>(responseData);
-
+                for (int i = 0; i < deserializeData.Coins.Count; i++)
+                {
+                    deserializeData.Coins[i].Item.Score++;
+                }
                 _viewModel.Update(deserializeData);
                 Debug.WriteLine("Coins count: " + _viewModel.CurrentCoins.Count);
             }

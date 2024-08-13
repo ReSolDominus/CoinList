@@ -4,37 +4,43 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinList.View"
+        xmlns:vm="clr-namespace:CoinList.ViewModel.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <vm:PriceChangeConverter x:Key="PriceChangeConverter"/>
+    </Window.Resources>
     <Grid>
-        <ListView x:Name="CoinListView" ItemsSource="{Binding CurrentCoins}">
+        <ListView x:Name="CoinListView" ItemsSource="{Binding CurrentCoins}" SelectedItem="{Binding ItemSelected}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Рейтинг">
+                    <GridViewColumn Header="№">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Data.MarketCap, FallbackValue='Error'}"/>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Score, FallbackValue='Error'}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Назва">
+                    <GridViewColumn Header="Name">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Name, FallbackValue='Error'}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Ціна">
+                    <GridViewColumn Header="Price in USD">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Data.Price, FallbackValue='Error'}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Зміа ціни за 24 години">
+                    <GridViewColumn Header="Price change for 24h">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Data.PriceChangePercentage24H, FallbackValue='Error'}"/>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Data.PriceChangePercentage24H, 
+                                                  Converter={StaticResource PriceChangeConverter},
+                                                  ConverterParameter='btc'}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
