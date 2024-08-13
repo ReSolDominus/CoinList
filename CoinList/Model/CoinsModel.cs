@@ -43,7 +43,7 @@ namespace CoinList.Model
         public Item Item { get; set; }
     }
 
-    class CoinsModel
+    public class CoinsModel
     {
         public List<Coin> Coins { get; set; }
     }

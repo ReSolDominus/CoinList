@@ -1,14 +1,15 @@
 ﻿using System.Windows;
-using CoinList.Model;
+using CoinList.ViewModel;
 
 namespace CoinList.View
 {
     public partial class MainWindow : Window
     {
-        CoinGeckoModel geckoModel = new CoinGeckoModel();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel(this);
         }
+
     }
 }
