@@ -65,7 +65,7 @@ namespace CoinList.Model
         public Item Item { get; set; }
     }
 
-    public class CoinsModel
+    public class CoinsModelMainWindow
     {
         public List<Coin> Coins { get; set; }
     }

@@ -24,7 +24,12 @@
                     <GridViewColumn Header="Name">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Name, FallbackValue='Error'}"/>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Name, FallbackValue='Error'}">
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding Gesture="LeftDoubleClick" 
+                                                      Command="{Binding DataContext.ItemDoubleClickCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -47,6 +52,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        
 
     </Grid>
 </Window>

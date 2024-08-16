@@ -26,10 +26,26 @@ namespace CoinList.Model
             _viewModel = viewModel;
 
             TrendingSearchList();
-            /*_timer = new DispatcherTimer();
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(10);
+            _timer.Tick += async (sender, e) => await TrendingSearchList();
+            _timer.Start();
+        }
+
+        public CoinGeckoModel(CoinWindowViewModel viewModel)
+        {
+            //client.BaseAddress = new Uri("https://api.coingecko.com");
+
+            //client.DefaultRequestHeaders.Accept.Clear();
+            //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            //client.DefaultRequestHeaders.Add("X-Cg-Demo-Api-Key", "CG-bYQBma73zDroTq2xVsonwvYD");
+
+            //_viewModel = viewModel;
+
+            _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(100);
             _timer.Tick += async (sender, e) => await TrendingSearchList();
-            _timer.Start();*/
+            _timer.Start();
         }
 
         public async Task Ping()
@@ -52,7 +68,7 @@ namespace CoinList.Model
             if (response.IsSuccessStatusCode)
             {
                 string responseData = await response.Content.ReadAsStringAsync();
-                CoinsModel deserializeData = JsonConvert.DeserializeObject<CoinsModel>(responseData);
+                CoinsModelMainWindow deserializeData = JsonConvert.DeserializeObject<CoinsModelMainWindow>(responseData);
                 for (int i = 0; i < deserializeData.Coins.Count; i++)
                 {
                     deserializeData.Coins[i].Item.Score++;
@@ -66,5 +82,19 @@ namespace CoinList.Model
             }
         }
 
+        public async Task GetCoinData(string id, CoinWindowViewModel viewModel)
+        {
+            HttpResponseMessage response = await client.GetAsync("/api/v3/coins/"+ id);
+            if (response.IsSuccessStatusCode)
+            {
+                string responseData = await response.Content.ReadAsStringAsync();
+                CoinsModelCoinWindow deserializeData = JsonConvert.DeserializeObject<CoinsModelCoinWindow>(responseData);
+                viewModel.Update(deserializeData);
+            }
+            else
+            {
+
+            }
+        }
     }
 }

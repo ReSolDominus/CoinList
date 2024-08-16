@@ -1,11 +1,8 @@
-﻿using CoinList.View;
-using CoinList.Model;
-using System;
-using System.Collections.Generic;
+﻿using CoinList.Model;
+using CoinList.View;
+using Prism.Commands;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CoinList.ViewModel
 {
@@ -16,8 +13,22 @@ namespace CoinList.ViewModel
         {
             _currentCoins = new ObservableCollection<Coin>();
             coinGeckoAPI = new CoinGeckoModel(this);
+            ItemDoubleClickCommand = new DelegateCommand(this.CoinListView_MouseDoubleClick);
         }
 
+
+        Coin _itemSelected;
+        public Coin ItemSelected
+        {
+            get { return _itemSelected; }
+            set
+            {
+                _itemSelected = value;
+                OnPropertyChanged("ItemSelected");
+            }
+        }
+
+        // Список монет
         private ObservableCollection<Coin> _currentCoins;
         public ObservableCollection<Coin> CurrentCoins
         {
@@ -28,14 +39,23 @@ namespace CoinList.ViewModel
                 OnPropertyChanged("CurrentCoins");
             }
         }
-
-        public void Update(CoinsModel coins)
+        public void Update(CoinsModelMainWindow coins)
         {
             CurrentCoins.Clear();
             foreach (var coin in coins.Coins)
             {
                 CurrentCoins.Add(coin);
             }
+        }
+
+        // Подвійний клік на назву елементу списка
+        public ICommand ItemDoubleClickCommand { get; private set; }
+
+        CoinWindow window;
+        void CoinListView_MouseDoubleClick()
+        {
+            window = new CoinWindow(ItemSelected.Item.Id);
+            window.Show();
         }
     }
 }

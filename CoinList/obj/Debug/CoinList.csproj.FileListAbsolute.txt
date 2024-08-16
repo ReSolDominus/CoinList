@@ -20,3 +20,8 @@ D:\C#\CoinList\CoinList\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\C#\CoinList\CoinList\obj\Debug\View\Themes\DarkTheme.baml
 D:\C#\CoinList\CoinList\obj\Debug\App.baml
 D:\C#\CoinList\CoinList\obj\Debug\View\Themes\LightTheme.baml
+D:\C#\CoinList\CoinList\obj\Debug\View\CoinWindow.g.cs
+D:\C#\CoinList\CoinList\obj\Debug\View\CoinWindow.baml
+D:\C#\CoinList\CoinList\bin\Debug\Prism.dll
+D:\C#\CoinList\CoinList\bin\Debug\Prism.pdb
+D:\C#\CoinList\CoinList\bin\Debug\Prism.xml
