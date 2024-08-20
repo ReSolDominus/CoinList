@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:CoinList.View"
         xmlns:vm="clr-namespace:CoinList.ViewModel.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CoinList" Height="750" Width="750">
     <Window.Resources>
         <vm:PriceChangeConverter x:Key="PriceChangeConverter"/>
     </Window.Resources>
     <Grid>
-        <ListView x:Name="CoinListView" ItemsSource="{Binding CurrentCoins}" SelectedItem="{Binding ItemSelected}">
+        <ListView x:Name="CoinListView" ItemsSource="{Binding CurrentCoins}" SelectedItem="{Binding ItemSelected}" FontSize="24">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="№">
@@ -52,7 +52,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
-
+        <Button Content="Theme swich" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="550,650,5,5" Height="55" Width="165" FontSize="24" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.ThemeSwitchCommand}"/>
     </Grid>
 </Window>

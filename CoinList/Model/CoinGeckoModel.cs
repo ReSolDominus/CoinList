@@ -1,99 +1,102 @@
 ﻿using CoinList.ViewModel;
 using Newtonsoft.Json;
 using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace CoinList.Model
 {
     public class CoinGeckoModel
     {
-        private static readonly HttpClient client = new HttpClient();
-        public MainWindowViewModel _viewModel;
-        private DispatcherTimer _timer;
+        private static readonly HttpClient client = new HttpClient(); // Статичний екземпляр HttpClient для запитів до API
+        public MainWindowViewModel _viewModelMain; // Посилання на ViewModel для головного вікна
+        public CoinWindowViewModel _viewModelCoin; // Посилання на ViewModel для вікна монети
+        private DispatcherTimer _timer; // Таймер для періодичних запитів
 
+        // Конструктор, що приймає MainWindowViewModel
         public CoinGeckoModel(MainWindowViewModel viewModel)
         {
-            client.BaseAddress = new Uri("https://api.coingecko.com");
-
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("X-Cg-Demo-Api-Key", "CG-bYQBma73zDroTq2xVsonwvYD");
-
-            _viewModel = viewModel;
-
-            TrendingSearchList();
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(10);
-            _timer.Tick += async (sender, e) => await TrendingSearchList();
-            _timer.Start();
+            client.BaseAddress = new Uri("https://api.coingecko.com"); // Базова адреса для запитів до API
+            _viewModelMain = viewModel;
         }
 
+        // Конструктор, що приймає CoinWindowViewModel
         public CoinGeckoModel(CoinWindowViewModel viewModel)
         {
-            //client.BaseAddress = new Uri("https://api.coingecko.com");
-
-            //client.DefaultRequestHeaders.Accept.Clear();
-            //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            //client.DefaultRequestHeaders.Add("X-Cg-Demo-Api-Key", "CG-bYQBma73zDroTq2xVsonwvYD");
-
-            //_viewModel = viewModel;
-
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(100);
-            _timer.Tick += async (sender, e) => await TrendingSearchList();
-            _timer.Start();
+            _viewModelCoin = viewModel;
         }
 
+        // Метод для перевірки доступності API
         public async Task Ping()
         {
-            HttpResponseMessage response = await client.GetAsync("/api/v3/ping");
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                string responseData = await response.Content.ReadAsStringAsync();
+                HttpResponseMessage response = await client.GetAsync("/api/v3/ping");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    MessageBox.Show($"Ping failed with status code: {response.StatusCode}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-
+                MessageBox.Show($"Ping failed: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Метод для отримання списку трендових пошукових запитів
         public async Task TrendingSearchList()
         {
-            HttpResponseMessage response = await client.GetAsync("/api/v3/search/trending");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                string responseData = await response.Content.ReadAsStringAsync();
-                CoinsModelMainWindow deserializeData = JsonConvert.DeserializeObject<CoinsModelMainWindow>(responseData);
-                for (int i = 0; i < deserializeData.Coins.Count; i++)
+                HttpResponseMessage response = await client.GetAsync("/api/v3/search/trending");
+                if (response.IsSuccessStatusCode)
                 {
-                    deserializeData.Coins[i].Item.Score++;
+                    string responseData = await response.Content.ReadAsStringAsync();
+                    CoinsModelMainWindow deserializeData = JsonConvert.DeserializeObject<CoinsModelMainWindow>(responseData);
+                    for (int i = 0; i < deserializeData.Coins.Count; i++)
+                    {
+                        deserializeData.Coins[i].Item.Score++;
+                    }
+                    _viewModelMain.Update(deserializeData);
                 }
-                _viewModel.Update(deserializeData);
-                Debug.WriteLine("Coins count: " + _viewModel.CurrentCoins.Count);
+                else
+                {
+                    MessageBox.Show($"Trending search list request failed with status code: {response.StatusCode}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-
+                MessageBox.Show($"Trending search list request failed: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        public async Task GetCoinData(string id, CoinWindowViewModel viewModel)
+        // Метод для отримання детальної інформації про монету
+        public async Task GetCoinData(string id)
         {
-            HttpResponseMessage response = await client.GetAsync("/api/v3/coins/"+ id);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                string responseData = await response.Content.ReadAsStringAsync();
-                CoinsModelCoinWindow deserializeData = JsonConvert.DeserializeObject<CoinsModelCoinWindow>(responseData);
-                viewModel.Update(deserializeData);
+                HttpResponseMessage response = await client.GetAsync("/api/v3/coins/" + id);
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+                    CoinsModelCoinWindow deserializeData = JsonConvert.DeserializeObject<CoinsModelCoinWindow>(responseData);
+                    _viewModelCoin.Update(deserializeData);
+                }
+                else
+                {
+                    MessageBox.Show($"Coin data request failed with status code: {response.StatusCode}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-
+                MessageBox.Show($"Coin data request failed: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

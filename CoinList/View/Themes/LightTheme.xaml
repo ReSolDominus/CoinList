@@ -1,61 +1,88 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="ListViewBackgroundColor" Color="#F0F0F0 "/>
-    <SolidColorBrush x:Key="ListViewItemBackgroundColor" Color="#F0F0F0"/>
-    <!--<SolidColorBrush x:Key="ListViewItemHoverBackgroundColor" Color="#DDFFFF"/>-->
-    <SolidColorBrush x:Key="ListViewItemForegroundColor" Color="#333333"/>
+    <SolidColorBrush x:Key="BackgroundColor" Color="#F0F0F0 "/>
+    <SolidColorBrush x:Key="ItemBackgroundColor" Color="#C4C4C4"/>
+    <SolidColorBrush x:Key="ForegroundColor" Color="#333333"/>
+
+    <SolidColorBrush x:Key="ButtonHoverBackgroundColor" Color="#444444"/>
+    <SolidColorBrush x:Key="ButtonPressedBackgroundColor" Color="#333333"/>
+    <SolidColorBrush x:Key="ButtonHoverPressedForegroundColor" Color="#FFFFFF"/>
+    
+    <!-- Стиль для Window -->
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
+    </Style>
+
+    <!-- Стиль для Grid -->
+    <Style TargetType="Grid">
+        <Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
+    </Style>
+
+    <!-- Стиль для TextBox -->
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
+    </Style>
+
 
     <!-- Стиль для ListView -->
     <Style TargetType="ListView">
-        <Setter Property="Background" Value="{DynamicResource ListViewBackgroundColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundColor}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ListViewBackgroundColor}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundColor}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="5"/>
     </Style>
 
     <!-- Стиль для GridViewColumnHeader -->
     <Style TargetType="GridViewColumnHeader">
-        <Setter Property="Background" Value="{DynamicResource ListViewBackgroundColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundColor}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
         <Setter Property="Padding" Value="10,5"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-
-        <!--<Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ListViewItemHoverBackgroundColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
-            </Trigger>
-            <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ListViewItemHoverBackgroundColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
-            </Trigger>
-            <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ListViewItemHoverBackgroundColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
-            </Trigger>
-        </Style.Triggers>-->
     </Style>
 
     <!-- Стиль для ListViewItem -->
     <Style TargetType="ListViewItem">
-        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundColor}"/>
+        <Setter Property="Background" Value="{DynamicResource ItemBackgroundColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
         <Setter Property="Padding" Value="10"/>
         <Setter Property="Margin" Value="2"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
+    </Style>
 
-        <!-- <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ListViewItemHoverBackgroundColor}"/>
-            </Trigger>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ListViewItemHoverBackgroundColor}" />
-            </Trigger>
-        </Style.Triggers> -->
+    <!-- Стиль для Button -->
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonHoverBackgroundColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonHoverPressedForegroundColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonPressedBackgroundColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonHoverPressedForegroundColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

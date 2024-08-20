@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinList.View"
         mc:Ignorable="d"
-        Title="{Binding Name}" Height="450" Width="800">
+        Title="{Binding Name}" Height="330" Width="425">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="161,194,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="110"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,5,0,0"   FontSize="30" Width="375" Height="40" Foreground="{DynamicResource ForegroundColor}" Text="{Binding Name}"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,45,0,0"  FontSize="30" Width="375" Height="40" Foreground="{DynamicResource ForegroundColor}" Text="{Binding CurrentPrice}"/>
 
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,85,0,0"  FontSize="30" Width="375" Height="40" Foreground="{DynamicResource ForegroundColor}" Text="Price change by time"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,130,0,0" FontSize="24" Width="375" Height="30" Foreground="{DynamicResource ForegroundColor}" Text="{Binding PriceChangePercentage24h}"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,160,0,0" FontSize="24" Width="375" Height="30" Foreground="{DynamicResource ForegroundColor}" Text="{Binding PriceChangePercentage7d}"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,190,0,0" FontSize="24" Width="375" Height="30" Foreground="{DynamicResource ForegroundColor}" Text="{Binding PriceChangePercentage14d}"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,220,0,0" FontSize="24" Width="375" Height="30" Foreground="{DynamicResource ForegroundColor}" Text="{Binding PriceChangePercentage30d}"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,250,0,0" FontSize="24" Width="375" Height="30" Foreground="{DynamicResource ForegroundColor}" Text="{Binding PriceChangePercentage1y}"/>
     </Grid>
 </Window>

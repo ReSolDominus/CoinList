@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 namespace CoinList.ViewModel.Converters
 {
-    internal class PriceChangeConverter : IValueConverter
+    public class PriceChangeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
