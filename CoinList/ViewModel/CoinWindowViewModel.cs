@@ -6,33 +6,33 @@ namespace CoinList.ViewModel
 {
     public class CoinWindowViewModel : BaseViewModel
     {
-        private string coinId;                      // ID криптовалюти, для якої буде відображатися інформація
-        private CoinGeckoModel сoinGeckoService;    // Екземпляр для отримання даних про криптовалюту
-        private DispatcherTimer _timer;             // Таймер для періодичного оновлення даних
-        private CoinsModelCoinWindow coinData;      // Модель даних для криптовалюти
+        private string _coinId;                      // ID криптовалюти, для якої буде відображатися інформація
+        private CoinGeckoModel _сoinGeckoService;    // Екземпляр для отримання даних про криптовалюту
+        private DispatcherTimer _timer;              // Таймер для періодичного оновлення даних
+        private CoinsModelCoinWindow _coinData;      // Модель даних для криптовалюти
 
         // Конструктор, який приймає ID криптовалюти, для якої буде відображатися інформація
         public CoinWindowViewModel(string coinId) 
         {
-            сoinGeckoService = new CoinGeckoModel(this);
-            this.coinId = coinId;
+            _сoinGeckoService = new CoinGeckoModel(this);
+            this._coinId = coinId;
             GetData(); // Запуск методу для періодичного оновлення даних
         }
 
         // Метод для запуску періодичного оновлення даних
         private async void GetData()
         {
-            await сoinGeckoService.GetCoinData(coinId); // Отримання початкових даних
+            await _сoinGeckoService.GetCoinData(_coinId); // Отримання початкових даних
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(10);
-            _timer.Tick += async (sender, e) => await сoinGeckoService.GetCoinData(coinId);
+            _timer.Tick += async (sender, e) => await _сoinGeckoService.GetCoinData(_coinId);
             _timer.Start();
         }
 
         // Метод для оновлення відображуваних даних криптовалюти
         public void Update(CoinsModelCoinWindow coinData)
         {
-            this.coinData = coinData;
+            this._coinData = coinData;
 
             if (coinData != null)
             {
@@ -41,11 +41,11 @@ namespace CoinList.ViewModel
                 MarketCapitalization = "MarketCapitalization: " + coinData.MarketData.MarketCap["usd"].ToString() + "$";
                 TotalVolume = "MarketCapitalization: " + coinData.MarketData.TotalVolume["usd"].ToString() + "$";
 
-                PriceChangePercentage24h = "24h: " + coinData.MarketData.PriceChangePercentage24h.ToString() + "%";
-                PriceChangePercentage7d  = "7d: "  + coinData.MarketData.PriceChangePercentage7d.ToString()  + "%";
-                PriceChangePercentage14d = "14d: " + coinData.MarketData.PriceChangePercentage14d.ToString() + "%";
-                PriceChangePercentage30d = "30d: " + coinData.MarketData.PriceChangePercentage30d.ToString() + "%";
-                PriceChangePercentage1y  = "1y: "  + coinData.MarketData.PriceChangePercentage1y.ToString()  + "%";
+                PriceChangePercentage24Hours = "24h: " + coinData.MarketData.PriceChangePercentage24Hours.ToString() + "%";
+                PriceChangePercentage7Days  = "7d: "  + coinData.MarketData.PriceChangePercentage7Days.ToString()  + "%";
+                PriceChangePercentage14Days = "14d: " + coinData.MarketData.PriceChangePercentage14Days.ToString() + "%";
+                PriceChangePercentage30Days = "30d: " + coinData.MarketData.PriceChangePercentage30Days.ToString() + "%";
+                PriceChangePercentage1Year  = "1y: "  + coinData.MarketData.PriceChangePercentage1Year.ToString()  + "%";
             }
         }
 
@@ -98,63 +98,63 @@ namespace CoinList.ViewModel
             }
         }
 
-        private string _priceChangePercentage24h;
-        public string PriceChangePercentage24h
+        private string _priceChangePercentage24Hours;
+        public string PriceChangePercentage24Hours
         {
-            get { return _priceChangePercentage24h; }
+            get { return _priceChangePercentage24Hours; }
             set
             {
-                _priceChangePercentage24h = value;
+                _priceChangePercentage24Hours = value;
                 if (value != null) { }
-                OnPropertyChanged("PriceChangePercentage24h");
+                OnPropertyChanged("PriceChangePercentage24Hours");
             }
         }
 
-        private string _priceChangePercentage7d;
-        public string PriceChangePercentage7d
+        private string _priceChangePercentage7Days;
+        public string PriceChangePercentage7Days
         {
-            get { return _priceChangePercentage7d; }
+            get { return _priceChangePercentage7Days; }
             set
             {
-                _priceChangePercentage7d = value;
+                _priceChangePercentage7Days = value;
                 if (value != null) { }
-                OnPropertyChanged("PriceChangePercentage7d");
+                OnPropertyChanged("PriceChangePercentage7Days");
             }
         }
 
-        private string _priceChangePercentage14d;
-        public string PriceChangePercentage14d
+        private string _priceChangePercentage14Days;
+        public string PriceChangePercentage14Days
         {
-            get { return _priceChangePercentage14d; }
+            get { return _priceChangePercentage14Days; }
             set
             {
-                _priceChangePercentage14d = value;
+                _priceChangePercentage14Days = value;
                 if (value != null) { }
-                OnPropertyChanged("PriceChangePercentage14d");
+                OnPropertyChanged("PriceChangePercentage14Days");
             }
         }
 
-        private string _priceChangePercentage30d;
-        public string PriceChangePercentage30d
+        private string _priceChangePercentage30Days;
+        public string PriceChangePercentage30Days
         {
-            get { return _priceChangePercentage30d; }
+            get { return _priceChangePercentage30Days; }
             set
             {
-                _priceChangePercentage30d = value;
+                _priceChangePercentage30Days = value;
                 if (value != null) { }
-                OnPropertyChanged("PriceChangePercentage30d");
+                OnPropertyChanged("PriceChangePercentage30Days");
             }
         }
 
-        private string _priceChangePercentage1y;
-        public string PriceChangePercentage1y
+        private string _priceChangePercentage1Year;
+        public string PriceChangePercentage1Year
         {
-            get { return _priceChangePercentage1y; }
+            get { return _priceChangePercentage1Year; }
             set
             {
-                _priceChangePercentage1y = value;
+                _priceChangePercentage1Year = value;
                 if (value != null) { }
-                OnPropertyChanged("PriceChangePercentage1y");
+                OnPropertyChanged("PriceChangePercentage1Year");
             }
         }
     }

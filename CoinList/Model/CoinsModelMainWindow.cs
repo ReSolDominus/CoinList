@@ -10,7 +10,7 @@ namespace CoinList.Model
         public double Price { get; set; }
 
         [JsonProperty("price_change_percentage_24h")]
-        public Dictionary<string, double> PriceChangePercentage24H { get; set; }
+        public Dictionary<string, double> PriceChangePercentage24Hours { get; set; }
     }
 
     public class Item

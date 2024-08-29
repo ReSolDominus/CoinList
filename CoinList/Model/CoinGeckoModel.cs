@@ -10,15 +10,15 @@ namespace CoinList.Model
 {
     public class CoinGeckoModel
     {
-        private static readonly HttpClient client = new HttpClient(); // Статичний екземпляр HttpClient для запитів до API
-        public MainWindowViewModel _viewModelMain; // Посилання на ViewModel для головного вікна
-        public CoinWindowViewModel _viewModelCoin; // Посилання на ViewModel для вікна монети
-        private DispatcherTimer _timer; // Таймер для періодичних запитів
+        private static readonly HttpClient _client = new HttpClient();  // Статичний екземпляр HttpClient для запитів до API
+        private MainWindowViewModel _viewModelMain;                     // Посилання на ViewModel для головного вікна
+        private CoinWindowViewModel _viewModelCoin;                     // Посилання на ViewModel для вікна монети
+        private DispatcherTimer _timer;                                 // Таймер для періодичних запитів
 
         // Конструктор, що приймає MainWindowViewModel
         public CoinGeckoModel(MainWindowViewModel viewModel)
         {
-            client.BaseAddress = new Uri("https://api.coingecko.com"); // Базова адреса для запитів до API
+            _client.BaseAddress = new Uri("https://api.coingecko.com"); // Базова адреса для запитів до API
             _viewModelMain = viewModel;
         }
 
@@ -33,7 +33,7 @@ namespace CoinList.Model
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync("/api/v3/ping");
+                HttpResponseMessage response = await _client.GetAsync("/api/v3/ping");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -51,11 +51,11 @@ namespace CoinList.Model
         }
 
         // Метод для отримання списку трендових пошукових запитів
-        public async Task TrendingSearchList()
+        public async Task GetTrendingSearchList()
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync("/api/v3/search/trending");
+                HttpResponseMessage response = await _client.GetAsync("/api/v3/search/trending");
                 if (response.IsSuccessStatusCode)
                 {
                     string responseData = await response.Content.ReadAsStringAsync();
@@ -82,7 +82,7 @@ namespace CoinList.Model
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync("/api/v3/coins/" + id);
+                HttpResponseMessage response = await _client.GetAsync("/api/v3/coins/" + id);
                 if (response.IsSuccessStatusCode)
                 {
                     string responseData = await response.Content.ReadAsStringAsync();

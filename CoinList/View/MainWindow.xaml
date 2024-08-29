@@ -43,7 +43,7 @@
                     <GridViewColumn Header="Price change for 24h">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Data.PriceChangePercentage24H, 
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Data.PriceChangePercentage24Hours, 
                                                   Converter={StaticResource PriceChangeConverter},
                                                   ConverterParameter='btc'}"/>
                             </DataTemplate>

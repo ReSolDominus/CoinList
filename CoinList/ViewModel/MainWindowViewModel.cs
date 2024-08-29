@@ -11,14 +11,14 @@ namespace CoinList.ViewModel
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        CoinGeckoModel сoinGeckoService; // Екземпляр для отримання даних про криптовалюту
-        private DispatcherTimer _timer;  // Таймер для періодичного оновлення даних
+        private CoinGeckoModel _сoinGeckoService;   // Екземпляр для отримання даних про криптовалюту
+        private DispatcherTimer _timer;             // Таймер для періодичного оновлення даних
 
         // Конструктор, який приймає посилання на головне вікно
         public MainWindowViewModel(MainWindow mainWindow)
         {
             _currentCoins = new ObservableCollection<Coin>();
-            сoinGeckoService = new CoinGeckoModel(this);
+            _сoinGeckoService = new CoinGeckoModel(this);
             ItemDoubleClickCommand = new DelegateCommand(this.CoinListView_MouseDoubleClick); // Прив'язка команди до події подвійного кліку
             ThemeSwitchCommand = new DelegateCommand(this.ThemeSwitch); // Прив'язка команди зміни теми інтерфейсу
             ThemeSwitch();
@@ -28,10 +28,10 @@ namespace CoinList.ViewModel
         // Метод для запуску періодичного оновлення даних
         private async void GetData()
         {
-            await сoinGeckoService.TrendingSearchList(); // Отримання початкових даних
+            await _сoinGeckoService.GetTrendingSearchList(); // Отримання початкових даних
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(10);
-            _timer.Tick += async (sender, e) => await сoinGeckoService.TrendingSearchList();
+            _timer.Tick += async (sender, e) => await _сoinGeckoService.GetTrendingSearchList();
             _timer.Start();
         }
 
@@ -71,7 +71,7 @@ namespace CoinList.ViewModel
 
         // Відкриття нового вікна через подвійний клік на назву елементу списка
         public ICommand ItemDoubleClickCommand { get; private set; }
-        void CoinListView_MouseDoubleClick()
+        private void CoinListView_MouseDoubleClick()
         {
             if (_itemSelected != null)
             {
@@ -83,7 +83,7 @@ namespace CoinList.ViewModel
         // Зміна теми інтерфейсу
         bool isDarkTheme = true;
         public ICommand ThemeSwitchCommand { get; private set; }
-        void ThemeSwitch()
+        private void ThemeSwitch()
         {
             isDarkTheme = !isDarkTheme;
             var dictionary = new ResourceDictionary();

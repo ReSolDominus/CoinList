@@ -28,24 +28,24 @@ namespace CoinList.Model
         public Dictionary<string, float> TotalVolume { get; set; }
 
         [JsonProperty("price_change_percentage_24h")]
-        public float PriceChangePercentage24h { get; set; }
+        public float PriceChangePercentage24Hours { get; set; }
 
         [JsonProperty("price_change_percentage_7d")]
-        public float PriceChangePercentage7d { get; set; }
+        public float PriceChangePercentage7Days { get; set; }
 
         [JsonProperty("price_change_percentage_14d")]
-        public float PriceChangePercentage14d { get; set; }
+        public float PriceChangePercentage14Days { get; set; }
 
         [JsonProperty("price_change_percentage_30d")]
-        public float PriceChangePercentage30d { get; set; }
+        public float PriceChangePercentage30Days { get; set; }
 
         [JsonProperty("price_change_percentage_60d")]
-        public float PriceChangePercentage60d { get; set; }
+        public float PriceChangePercentage60Days { get; set; }
 
         [JsonProperty("price_change_percentage_200d")]
-        public float PriceChangePercentage200d { get; set; }
+        public float PriceChangePercentage200Days { get; set; }
 
         [JsonProperty("price_change_percentage_1y")]
-        public float PriceChangePercentage1y { get; set; }
+        public float PriceChangePercentage1Year { get; set; }
     }
 }
