@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Threading;
 
-namespace CoinList.ViewModel
+namespace CoinList.ViewModels
 {
     public class CoinWindowViewModel : BaseViewModel
     {

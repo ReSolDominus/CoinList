@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace CoinList.ViewModel
+namespace CoinList.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
@@ -15,7 +15,7 @@ namespace CoinList.ViewModel
         private DispatcherTimer _timer;             // Таймер для періодичного оновлення даних
 
         // Конструктор, який приймає посилання на головне вікно
-        public MainWindowViewModel(MainWindow mainWindow)
+        public MainWindowViewModel()
         {
             _currentCoins = new ObservableCollection<Coin>();
             _сoinGeckoService = new CoinGeckoModel(this);
@@ -75,7 +75,10 @@ namespace CoinList.ViewModel
         {
             if (_itemSelected != null)
             {
-                CoinWindow window = new CoinWindow(ItemSelected.Item.Id);
+                CoinWindow window = new CoinWindow
+                {
+                    DataContext = new CoinWindowViewModel(ItemSelected.Item.Id)
+                };
                 window.Show();
             }
         }

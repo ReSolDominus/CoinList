@@ -1,5 +1,4 @@
-﻿using CoinList.ViewModel;
-using System.Windows;
+﻿using System.Windows;
 
 namespace CoinList.View
 {
@@ -8,7 +7,6 @@ namespace CoinList.View
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel(this);
         }
     }
 }

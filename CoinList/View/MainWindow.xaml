@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinList.View"
-        xmlns:vm="clr-namespace:CoinList.ViewModel.Converters"
+        xmlns:vm="clr-namespace:CoinList.ViewModels"
+        xmlns:vmc="clr-namespace:CoinList.ViewModels.Converters"
         mc:Ignorable="d"
         Title="CoinList" Height="750" Width="750">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
     <Window.Resources>
-        <vm:PriceChangeConverter x:Key="PriceChangeConverter"/>
+        <vmc:PriceChangeConverter x:Key="PriceChangeConverter"/>
     </Window.Resources>
     <Grid>
         <ListView x:Name="CoinListView" ItemsSource="{Binding CurrentCoins}" SelectedItem="{Binding ItemSelected}" FontSize="24">

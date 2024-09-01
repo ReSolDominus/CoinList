@@ -68,10 +68,10 @@
     <Compile Include="Model\CoinGeckoModel.cs" />
     <Compile Include="Model\CoinsModelCoinWindow.cs" />
     <Compile Include="Model\CoinsModelMainWindow.cs" />
-    <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\CoinWindowViewModel.cs" />
-    <Compile Include="ViewModel\Converters\PriceChangeConverter.cs" />
-    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CoinWindowViewModel.cs" />
+    <Compile Include="ViewModels\Converters\PriceChangeConverter.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="View\CoinWindow.xaml.cs">
       <DependentUpon>CoinWindow.xaml</DependentUpon>
     </Compile>

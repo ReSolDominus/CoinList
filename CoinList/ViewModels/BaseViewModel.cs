@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace CoinList.ViewModel
+namespace CoinList.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

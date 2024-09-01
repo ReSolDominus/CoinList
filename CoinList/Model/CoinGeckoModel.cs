@@ -1,4 +1,4 @@
-﻿using CoinList.ViewModel;
+﻿using CoinList.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
@@ -13,7 +13,6 @@ namespace CoinList.Model
         private static readonly HttpClient _client = new HttpClient();  // Статичний екземпляр HttpClient для запитів до API
         private MainWindowViewModel _viewModelMain;                     // Посилання на ViewModel для головного вікна
         private CoinWindowViewModel _viewModelCoin;                     // Посилання на ViewModel для вікна монети
-        private DispatcherTimer _timer;                                 // Таймер для періодичних запитів
 
         // Конструктор, що приймає MainWindowViewModel
         public CoinGeckoModel(MainWindowViewModel viewModel)

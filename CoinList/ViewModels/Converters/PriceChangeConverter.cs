@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace CoinList.ViewModel.Converters
+namespace CoinList.ViewModels.Converters
 {
     public class PriceChangeConverter : IValueConverter
     {
