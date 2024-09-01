@@ -4,7 +4,6 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace CoinList.Model
 {
@@ -58,7 +57,7 @@ namespace CoinList.Model
                 if (response.IsSuccessStatusCode)
                 {
                     string responseData = await response.Content.ReadAsStringAsync();
-                    CoinsModelMainWindow deserializeData = JsonConvert.DeserializeObject<CoinsModelMainWindow>(responseData);
+                    TrendingSearchListDTO deserializeData = JsonConvert.DeserializeObject<TrendingSearchListDTO>(responseData);
                     for (int i = 0; i < deserializeData.Coins.Count; i++)
                     {
                         deserializeData.Coins[i].Item.Score++;
@@ -85,7 +84,7 @@ namespace CoinList.Model
                 if (response.IsSuccessStatusCode)
                 {
                     string responseData = await response.Content.ReadAsStringAsync();
-                    CoinsModelCoinWindow deserializeData = JsonConvert.DeserializeObject<CoinsModelCoinWindow>(responseData);
+                    CoinDTO deserializeData = JsonConvert.DeserializeObject<CoinDTO>(responseData);
                     _viewModelCoin.Update(deserializeData);
                 }
                 else

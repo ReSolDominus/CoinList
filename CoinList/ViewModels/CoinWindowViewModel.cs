@@ -9,7 +9,7 @@ namespace CoinList.ViewModels
         private string _coinId;                      // ID криптовалюти, для якої буде відображатися інформація
         private CoinGeckoModel _сoinGeckoService;    // Екземпляр для отримання даних про криптовалюту
         private DispatcherTimer _timer;              // Таймер для періодичного оновлення даних
-        private CoinsModelCoinWindow _coinData;      // Модель даних для криптовалюти
+        private CoinDTO _coinData;      // Модель даних для криптовалюти
 
         // Конструктор, який приймає ID криптовалюти, для якої буде відображатися інформація
         public CoinWindowViewModel(string coinId) 
@@ -30,7 +30,7 @@ namespace CoinList.ViewModels
         }
 
         // Метод для оновлення відображуваних даних криптовалюти
-        public void Update(CoinsModelCoinWindow coinData)
+        public void Update(CoinDTO coinData)
         {
             this._coinData = coinData;
 

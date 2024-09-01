@@ -36,7 +36,7 @@ namespace CoinList.ViewModels
         }
 
         // Оновлення списку монет новими даними
-        public void Update(CoinsModelMainWindow coins)
+        public void Update(TrendingSearchListDTO coins)
         {
             CurrentCoins.Clear();
             foreach (var coin in coins.Coins)

@@ -25,3 +25,16 @@ D:\C#\CoinList\CoinList\obj\Debug\View\CoinWindow.baml
 D:\C#\CoinList\CoinList\bin\Debug\Prism.dll
 D:\C#\CoinList\CoinList\bin\Debug\Prism.pdb
 D:\C#\CoinList\CoinList\bin\Debug\Prism.xml
+D:\C#\CoinList\CoinList\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\C#\CoinList\CoinList\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\C#\CoinList\CoinList\bin\Debug\Prism.Container.Abstractions.dll
+D:\C#\CoinList\CoinList\bin\Debug\Prism.Events.dll
+D:\C#\CoinList\CoinList\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\C#\CoinList\CoinList\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\C#\CoinList\CoinList\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\C#\CoinList\CoinList\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\C#\CoinList\CoinList\bin\Debug\Prism.Container.Abstractions.pdb
+D:\C#\CoinList\CoinList\bin\Debug\Prism.Events.pdb
+D:\C#\CoinList\CoinList\bin\Debug\Prism.Events.xml
+D:\C#\CoinList\CoinList\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\C#\CoinList\CoinList\bin\Debug\System.Threading.Tasks.Extensions.xml
