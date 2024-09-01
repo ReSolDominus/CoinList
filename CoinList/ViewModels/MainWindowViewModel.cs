@@ -3,6 +3,7 @@ using CoinList.View;
 using Prism.Commands;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -21,12 +22,12 @@ namespace CoinList.ViewModels
             _сoinGeckoService = new CoinGeckoModel(this);
             ItemDoubleClickCommand = new DelegateCommand(this.CoinListView_MouseDoubleClick); // Прив'язка команди до події подвійного кліку
             ThemeSwitchCommand = new DelegateCommand(this.ThemeSwitch); // Прив'язка команди зміни теми інтерфейсу
+            WindowLoadedCommand = new DelegateCommand(this.WindowLoaded);
             ThemeSwitch();
-            GetData();
         }
 
         // Метод для запуску періодичного оновлення даних
-        private async void GetData()
+        private async Task GetData()
         {
             await _сoinGeckoService.GetTrendingSearchList(); // Отримання початкових даних
             _timer = new DispatcherTimer();
@@ -100,6 +101,13 @@ namespace CoinList.ViewModels
             }
             Application.Current.Resources.MergedDictionaries.Clear();
             Application.Current.Resources.MergedDictionaries.Add(dictionary);
+        }
+
+        // Завантаженн даних під час завантаження вікна
+        public ICommand WindowLoadedCommand { get; private set; }
+        private void WindowLoaded()
+        {
+            _ = GetData();
         }
     }
 }

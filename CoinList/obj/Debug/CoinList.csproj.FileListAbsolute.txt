@@ -38,3 +38,6 @@ D:\C#\CoinList\CoinList\bin\Debug\Prism.Events.pdb
 D:\C#\CoinList\CoinList\bin\Debug\Prism.Events.xml
 D:\C#\CoinList\CoinList\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\C#\CoinList\CoinList\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\C#\CoinList\CoinList\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\C#\CoinList\CoinList\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\C#\CoinList\CoinList\bin\Debug\Microsoft.Xaml.Behaviors.xml

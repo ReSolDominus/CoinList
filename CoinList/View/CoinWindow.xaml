@@ -3,16 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:CoinList.View" 
         xmlns:vm="clr-namespace:CoinList.ViewModels"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="{Binding Name}" Height="330" Width="425">
-    <Window.DataContext>
-    <ObjectDataProvider ObjectType="{x:Type vm:CoinWindowViewModel}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding WindowLoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
-    </ObjectDataProvider>
+    <Window.DataContext>
+        <ObjectDataProvider ObjectType="{x:Type vm:CoinWindowViewModel}"/>
     </Window.DataContext>
+    
     <Grid>
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,5,0,0"   FontSize="30" Width="375" Height="40" Foreground="{DynamicResource ForegroundColor}" Text="{Binding Name}"/>
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,45,0,0"  FontSize="30" Width="375" Height="40" Foreground="{DynamicResource ForegroundColor}" Text="{Binding CurrentPrice}"/>

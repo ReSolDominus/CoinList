@@ -1,5 +1,8 @@
 ﻿using CoinList.Model;
+using Prism.Commands;
 using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace CoinList.ViewModels
@@ -9,18 +12,18 @@ namespace CoinList.ViewModels
         private string _coinId;                      // ID криптовалюти, для якої буде відображатися інформація
         private CoinGeckoModel _сoinGeckoService;    // Екземпляр для отримання даних про криптовалюту
         private DispatcherTimer _timer;              // Таймер для періодичного оновлення даних
-        private CoinDTO _coinData;      // Модель даних для криптовалюти
+        private CoinDTO _coinData;                   // Модель даних для криптовалюти
 
         // Конструктор, який приймає ID криптовалюти, для якої буде відображатися інформація
         public CoinWindowViewModel(string coinId) 
         {
             _сoinGeckoService = new CoinGeckoModel(this);
             this._coinId = coinId;
-            GetData(); // Запуск методу для періодичного оновлення даних
+            WindowLoadedCommand = new DelegateCommand(this.WindowLoaded);
         }
 
         // Метод для запуску періодичного оновлення даних
-        private async void GetData()
+        private async Task GetData()
         {
             await _сoinGeckoService.GetCoinData(_coinId); // Отримання початкових даних
             _timer = new DispatcherTimer();
@@ -156,6 +159,13 @@ namespace CoinList.ViewModels
                 if (value != null) { }
                 OnPropertyChanged("PriceChangePercentage1Year");
             }
+        }
+
+        // Запуск методу для періодичного оновлення даних під час завантаження вікна
+        public ICommand WindowLoadedCommand { get; private set; }
+        private void WindowLoaded()
+        {
+            _ = GetData();
         }
     }
 }
